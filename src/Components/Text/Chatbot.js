@@ -1,37 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Autosuggest from 'react-autosuggest';
-
+import './Chatbot.css';
 
 const Chatbot = () => {
   const [value, setValue] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   let typingTimer;
 
-  // Function to handle input change
   const handleChange = (event) => {
     const { value } = event.target;
     setValue(value);
-    clearTimeout(typingTimer); // Clear previous typing timer
-
-    // Set a new typing timer to fetch suggestions after a delay
-    typingTimer = setTimeout(() => {
-      fetchSuggestions(value);
-    }, 500);
   };
 
-  // Function to fetch autocomplete suggestions
+  const handleButtonClick = () => {
+    fetchSuggestions(value);
+  };
+
   const fetchSuggestions = async (inputValue) => {
-    // Make API call or fetch suggestions based on inputValue
-    // Example API call:
     const response = await fetch(`/api/suggestions?input=${inputValue}`);
     const data = await response.json();
     setSuggestions(data.suggestions);
   };
 
-  // Function to render suggestions
   const renderSuggestion = (suggestion) => <div>{suggestion}</div>;
 
-  // Autosuggest configuration
   const autosuggestProps = {
     suggestions: suggestions,
     onSuggestionsFetchRequested: () => {}, // Suggestions are fetched on input change
@@ -41,13 +33,22 @@ const Chatbot = () => {
   };
 
   return (
-    <Autosuggest
-      {...autosuggestProps}
-      inputProps={{
-        value: value,
-        onChange: handleChange,
-      }}
-    />
+    <div className="chatbot-container">
+      <div className="textarea-container">
+        <textarea
+          className="textarea"
+          value={value}
+          onChange={handleChange}
+          placeholder="Type your message here..."
+        />
+      </div>
+      <div className="button-container">
+        <button className="button" onClick={handleButtonClick}>
+          Send
+        </button>
+      </div>
+      {/* Autosuggest component can be added here */}
+    </div>
   );
 };
 
