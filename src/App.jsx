@@ -9,6 +9,7 @@ import Join from './Components/Join/Join';
 import Contact from './Components/Contact/Contact';
 import TextEditor from './Components/Text/Editor';
 import Vid from './Components/Vid/Vid'
+import Chatbot from './Components/Text/Chatbot';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Hero/>
       <Programs/>
       <TextEditor />
+      <Chatbot />
       <Vid />
       <Reasons/>
       <Plans/>

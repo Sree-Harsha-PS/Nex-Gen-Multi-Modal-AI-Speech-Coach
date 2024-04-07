@@ -41,12 +41,12 @@ const Reasons = () => {
             <span>Proven track record of success with our tested data</span>
           </div>
         </div>
-        <span style={{color: "var(--gray)", fontWeight: "normal"}}>OUR TECH-STACK</span>
-        <div className="partners">
+        <span style={{color: "var(--gray)", fontWeight: "normal"}}>OUR PROVEN TECH-STACK</span>
+        {/* <div className="partners">
               <img src={nb} alt="" />
               <img src={adidas} alt="" />
               <img src={nike} alt="" />
-        </div>
+        </div> */}
       </div>
     </div>
   );
